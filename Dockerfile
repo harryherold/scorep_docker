@@ -1,5 +1,5 @@
 # Download base image ubuntu
-FROM harryherold/scorepdevelopment
+FROM harryherold/scorep_docker
 
 # Update software repo
 RUN apt-get update
