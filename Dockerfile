@@ -23,6 +23,7 @@ RUN apt-get -y install \
     bison \
     subversion \
     git \
+    libunwind-dev \
     texinfo
 
 # Install Score-P Developer tools
