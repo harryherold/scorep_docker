@@ -58,7 +58,8 @@ RUN cd /tmp && \
 # Install libunwind from our repo
 RUN git clone https://github.com/score-p/libunwind /tmp/libunwind && \
     cd /tmp/libunwind && \
-    ./configure && make -j4 && make install
+    ./autogen.sh && \
+    ./configure --enable-static --enable-shared && make -j4 && make install
     
 # Setting env
 ENV SCOREP_DEV_ROOT /opt/scorep-dev-06
