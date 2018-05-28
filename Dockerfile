@@ -55,12 +55,7 @@ RUN cd /tmp && \
     cd /tmp/opari2-2.0.3 && \
     ./configure --prefix=/opt/opari2 --enable-static --enable-shared && make -j4 && make install
 
-# Install libunwind from our repo
-RUN git clone https://github.com/score-p/libunwind /tmp/libunwind && \
-    cd /tmp/libunwind && \
-    ./autogen.sh && \
-    ./configure --enable-static --enable-shared && make -j4 && make install
-    
+   
 # Setting env
 ENV SCOREP_DEV_ROOT /opt/scorep-dev-06
 ENV PATH ${SCOREP_DEV_ROOT}/bin:${PATH}
@@ -82,6 +77,12 @@ ENV PATH ${OPARI2_ROOT}/bin:${PATH}
 
 ENV SCOREP_SRC_DIR /opt/scorep
 
+# Install libunwind from our repo
+RUN git clone https://github.com/score-p/libunwind /tmp/libunwind && \
+    cd /tmp/libunwind && \
+    ./autogen.sh && \
+    ./configure --enable-static --enable-shared && make -j4 && make install
+ 
 WORKDIR ${SCOREP_SRC_DIR}
 
 # Setting volumes
